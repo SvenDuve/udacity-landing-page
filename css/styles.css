@@ -25,14 +25,6 @@ h1 {
     margin: 2em 1rem;
 }
 
-/* a {
-    text-decoration: none;
-    /* color: white; */
-}
-
-/* a:visited {
-    color: white;
-} */ */
 
 @media only screen and (min-width: 35em){
     h1 {
@@ -83,7 +75,6 @@ section {
 
 .navbar__menu li {
     display: inline-block;
-    /* margin: 10px; */
 }
 
 .navbar__menu .menu__link {
@@ -93,10 +84,6 @@ section {
     text-decoration: none;
     color: white;
 }
-
-/* .menu__link:visited {
-    color: white;
-} */
 
 
 .navbar__menu .menu__link:hover {
