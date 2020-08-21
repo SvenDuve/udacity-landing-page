@@ -18,6 +18,7 @@
  * 
 */
 
+// extract html sections
 const Sections = document.getElementsByTagName('section');
 
 /**
@@ -27,6 +28,7 @@ const Sections = document.getElementsByTagName('section');
 */
 
 
+// get Ids of the sections
 function getSectionIds(Sections) {
     
     let idSelections = []; 
@@ -39,7 +41,9 @@ function getSectionIds(Sections) {
     
 }
 
+
 // gets the sections headings as text in an array
+// Headings used later to dynamically populate the buttons
 function getSectionsHeadings(Sections) {
     
     let headingSections = [];
@@ -55,7 +59,7 @@ function getSectionsHeadings(Sections) {
 }
 
 
-
+// create button Ids, 
 function getButtonId(Ids) {
     let buttonIds = [];
     for (let i = 0; i < Ids.length; i++) {
@@ -83,8 +87,8 @@ function assembleSectionList(Headings) {
         let node = document.createElement("LI");
         node.className = 'navbar__menu menu__link';
         node.id = 'button' + Ids[i];
-        node.appendChild(document.createTextNode(Headings[i]));                              // Append the text to <li>
-        document.getElementById("navbar__list").appendChild(node);     // Append <li> to <ul> with id="myList"
+        node.appendChild(document.createTextNode(Headings[i]));
+        document.getElementById("navbar__list").appendChild(node);
         
     }
     
@@ -101,10 +105,12 @@ function capture(Ids) {
         
         let section = document.getElementById(Ids[i]);
 
-        
+        // section needs to be in a reasonable range of the visual screen before the conditional is executed
         if (0 <= section.getBoundingClientRect().y && section.getBoundingClientRect().y < 300 && document.querySelector('.your-active-class') !== null) {
             
+            // in case section still highlighted class will be removed
             document.querySelector('.your-active-class').classList.toggle('your-active-class');
+            // active class applied to active section
             section.className = 'your-active-class';
 
         }
@@ -113,6 +119,7 @@ function capture(Ids) {
 
 }
 
+// starts the event listener and sends to function capture
 function highlight() {
 
     window.addEventListener('scroll',(event) => {
@@ -125,12 +132,11 @@ function highlight() {
 
 // Scroll to anchor ID using scrollTO event
 
-
-
 function scrollThereNow() {
 
     for(let i = 0; i < Sections.length; i++){
         
+        // activates the event listener in the respective numbered button i
         let elmnt = document.getElementById(buttonIds[i]);
         let targetLoc = document.getElementById(Ids[i]);
         elmnt.addEventListener('click', function() {
@@ -151,6 +157,7 @@ function scrollThereNow() {
  * 
 */
 
+// bring neccessary arrays into scope
 const Ids = getSectionIds(Sections);
 const Headings = getSectionsHeadings(Sections);
 const buttonIds = getButtonId(Headings);
